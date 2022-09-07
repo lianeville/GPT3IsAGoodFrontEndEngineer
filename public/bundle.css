@@ -1,0 +1,139 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+h1 {
+  color: #f01;
+}
+
+h1.svelte-1sfh1jg {
+  color: #f01;
+}
+
+.carousel-container.svelte-1cjmsns.svelte-1cjmsns {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div.svelte-1cjmsns .sc-carousel__carousel-container {
+  height: 100%;
+}
+
+div.svelte-1cjmsns .sc-carousel__content-container {
+  height: 100%;
+}
+
+.job-container.svelte-1cjmsns.svelte-1cjmsns {
+  position: relative;
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.job-container.clicked .job {
+  transform: rotateY(180deg);
+}
+
+.job-container.clicked .job-front {
+  display: none;
+}
+
+.job-container:not(.clicked) .job-front {
+  display: block;
+}
+
+.job-container.clicked .job-back {
+  display: block;
+}
+
+.job-container:not(.clicked) .job-back {
+  display: none;
+}
+
+.job.svelte-1cjmsns.svelte-1cjmsns {
+  padding-bottom: 100%;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.job-front.svelte-1cjmsns.svelte-1cjmsns, .job-back.svelte-1cjmsns.svelte-1cjmsns {
+  height: 100%;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.job-front.svelte-1cjmsns.svelte-1cjmsns {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.job-back.svelte-1cjmsns.svelte-1cjmsns {
+  transform: rotateY(180deg);
+  background-color: beige;
+}
+
+.job-header.svelte-1cjmsns.svelte-1cjmsns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: white;
+  padding: 0.5em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.job-name.svelte-1cjmsns.svelte-1cjmsns {
+  font-size: 2em;
+}
+
+.job-tag.svelte-1cjmsns.svelte-1cjmsns {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin: 2px;
+  padding: 2px;
+}
+
+.stack-container.svelte-1cjmsns.svelte-1cjmsns {
+  display: flex;
+}
+
+.rating-container.svelte-1cjmsns.svelte-1cjmsns {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  margin-bottom: 0;
+  margin-top: 0.5em;
+}
+
+.rating-container.svelte-1cjmsns li.svelte-1cjmsns {
+  padding: 0.5em;
+  margin: 0 0.25em;
+  height: 1em;
+  width: 1em;
+  border-radius: 5em;
+  display: flex;
+}
+
+.nav-menu.svelte-n0ulae {
+  list-style-type: none;
+  font-size: 2em;
+  background-color: #565680;
+  color: white;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}

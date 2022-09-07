@@ -10,16 +10,24 @@
 <div class="carousel-container">
 	<Carousel bind:this={carousel} arrows={false} dots={false}>
 		{#each jobs as { name, position, salary, description, techStack, slogan, picUrl }}
-			<li class="job" style="background-image: url({picUrl})">
-				<div class="job-header">
-					<span class="job-name">{name}</span>
-					<span class="job-position job-tag">{position}</span>
-					<span class="job-salary job-tag">{formatter.format(salary)}</span>
-					<div class="stack-container">
-						{#each techStack as tech}
-							<span class="job-tag">{tech}</span>
-						{/each}
+			<li id="{name.replace(/\s/g, '')}" class="job-container" ontouchstart="this.classList.toggle('clicked');">
+				<div class="job">
+					<div class="job-front" style="background-image: url({picUrl})">
+						<div class="job-header">
+							<span class="job-name">{name}</span>
+							<span class="job-position job-tag">{position}</span>
+							<span class="job-salary job-tag">{formatter.format(salary)}</span>
+							<div class="stack-container">
+								{#each techStack as tech}
+									<span class="job-tag">{tech}</span>
+								{/each}
+							</div>
+						</div>
 					</div>
+					<div class="job-back">
+						back
+					</div>
+
 				</div>
 			</li>
 		{/each}
@@ -31,7 +39,7 @@
 	</ul>
 </div>
 
-<style>
+<style lang="scss">
 
 	.carousel-container {
 		height: 100%;
@@ -47,12 +55,61 @@
 		height: 100%;
 	}
 
-	.job {
+	.job-container {
+		position: relative;
 		list-style-type: none;
-		background-color: beige;
+		width: 100%;
+		height: 100%;
+		perspective: 500px;
+	}
+
+	:global(.job-container.clicked .job) {
+		transform: rotateY(180deg);
+	}
+
+	:global(.job-container.clicked .job-front) {
+		display: none;
+	}
+	:global(.job-container:not(.clicked) .job-front) {
+		display: block;
+	}
+
+	:global(.job-container.clicked .job-back) {
+		display: block;
+	}
+	:global(.job-container:not(.clicked) .job-back) {
+		display: none;
+	}
+
+	.job {
+		padding-bottom: 100%;
 		border-radius: 1em;
 		display: flex;
 		flex-direction: column-reverse;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		transition: 0.6s;
+		transform-style: preserve-3d;
+		position: relative;
+	}
+
+	.job-front, .job-back {
+		height: 100%;
+		transition: 0.6s;
+		transform-style: preserve-3d;
+		position: relative;
+		backface-visibility: hidden;
+	}
+
+	.job-front {
+		z-index: 2;
+		transform: rotateY(0deg);
+	}
+
+	.job-back {
+		transform: rotateY(180deg);
+		background-color: beige;
 	}
 
 	.job-header {
@@ -92,13 +149,14 @@
 	}
 
 	.rating-container li {
+		background-color: (rgb(0 0 0 / 20%));
 		padding: .5em;
 		margin: 0 .25em;
 		height: 1em;
 		width: 1em;
 		border-radius: 5em;
-		background-color: rgb(0 0 0 / 20%);
 		display: flex;
 	}
+
 
 </style>

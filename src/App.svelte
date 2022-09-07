@@ -56,7 +56,6 @@
 		))
 	}
 
-
 </script>
 
 <div class="main-content">
@@ -65,8 +64,11 @@
 	<NavMenuComponent />
 </div>
 
-<style>
-
+<style lang="scss">
+	$color: #ddd;
+	h1 {
+		color: $color;
+	}
 	.main-content {
 		display: flex;
 		flex-direction: column;
@@ -75,8 +77,8 @@
 		overflow: hidden;
 	}
 
-	:global(.main-content > *) {
-		margin: 0 .75em;
+	.main-content {
+		// margin: 0 .75em;
 	}
 
 	h1 {
