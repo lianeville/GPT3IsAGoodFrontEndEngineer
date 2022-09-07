@@ -3,6 +3,8 @@
 	let carousel;
 	import Icon from '@iconify/svelte';
 	export let jobs;
+
+	let formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 </script>
 
 <div class="carousel-container">
@@ -11,9 +13,13 @@
 			<li class="job" style="background-image: url({picUrl})">
 				<div class="job-header">
 					<span class="job-name">{name}</span>
-					<span class="job-position">{position}</span>
-					<span class="job-tech-stack">{techStack}</span>
-					<span class="job-salary">${salary}</span>
+					<span class="job-position job-tag">{position}</span>
+					<span class="job-salary job-tag">{formatter.format(salary)}</span>
+					<div class="stack-container">
+						{#each techStack as tech}
+							<span class="job-tag">{tech}</span>
+						{/each}
+					</div>
 				</div>
 			</li>
 		{/each}
@@ -52,6 +58,7 @@
 	.job-header {
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		background-color: rgb(0 0 0 / 35%);
 		color: white;
 		padding: .5em;
@@ -61,6 +68,17 @@
 
 	.job-name {
 		font-size: 2em;
+	}
+
+	.job-tag {
+		background-color: rgb(255 255 255 / 20%);
+		border-radius: 5px;
+		margin: 2px;
+		padding: 2px;
+	}
+
+	.stack-container {
+		display: flex;
 	}
 
 	.rating-container {
